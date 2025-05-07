@@ -1,0 +1,367 @@
+/* Search Container - Responsive Styles */
+.searchContainer {
+  padding: 15px 10px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.searchForm {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  gap: 8px;
+}
+
+.searchInput {
+  flex-grow: 1;
+  padding: 10px 15px;
+  min-width: 120px;
+  border: 1px solid #444;
+  border-radius: 25px;
+  background: #2a2a2a;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.searchButton {
+  padding: 10px 20px;
+  min-width: 80px;
+  background: #d4af37;
+  color: #121212;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+  .searchContainer {
+    padding: 12px 8px;
+  }
+  
+  .searchForm {
+    flex-direction: row;
+    gap: 6px;
+  }
+  
+  .searchInput {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .searchButton {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 481px) and (max-width: 768px) {
+  .searchContainer {
+    padding: 15px 10px;
+  }
+  
+  .searchInput {
+    padding: 10px 15px;
+  }
+  
+  .searchButton {
+    padding: 10px 16px;
+  }
+}
+
+/* Hover effects (not on touch devices) */
+@media (hover: hover) {
+  .searchInput:focus {
+    border-color: #d4af37;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3);
+  }
+  
+  .searchButton:hover {
+    background: #f5d042;
+    transform: translateY(-1px);
+  }
+}
+
+/* Accessibility focus states */
+.searchInput:focus-visible,
+.searchButton:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 2px;
+}
+
+/* Compact Movie Cards */
+.card {
+  background: #1e1e1e;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #e0e0e0;
+  border: 1px solid #2a2a2a;
+  position: relative; /* Ensure proper positioning context */
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.imageContainer {
+  position: relative;
+  padding-top: 150%; /* Increased for better button visibility */
+  overflow: visible; /* Ensure button isn't clipped */
+}
+
+.cardImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.02);
+}
+
+.cardContent {
+  padding: 0.8rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.title {
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.date {
+  color: #a0a0a0;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.ratingContainer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.rating {
+  background: rgba(212, 175, 55, 0.15);
+  color: #d4af37;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.favoriteButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10; /* Increased z-index */
+  transition: all 0.2s ease;
+  color: white;
+  font-size: 1rem;
+}
+
+.favoriteButton:hover {
+  background-color: rgba(212, 175, 55, 0.8);
+  transform: scale(1.1);
+}
+
+/*Empty state*/
+.emptyState {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+/* Ensure favorite button is visible on small screens */
+@media (max-width: 325px) {
+  .imageContainer {
+    padding-top: 160%; /* Further increased to accommodate button */
+  }
+
+  .favoriteButton {
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+    min-width: 24px; /* Ensure minimum size */
+    min-height: 24px;
+    z-index: 15; /* Higher z-index for small screens */
+  }
+
+  .card {
+    min-height: 200px; /* Minimum height to prevent collapse */
+  }
+}
+
+/* Grid System */
+.movieGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  padding: 15px;
+  background: #121212;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .movieGrid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .movieGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* Error Message Styles */
+.error {
+  position: relative;
+  border-left: 4px solid #ff4757;
+  background-color: #ffecec;
+  padding: 15px 20px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  border-radius: 6px;
+  color: #ff4757;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0 0 0 10px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+/* Add these styles to your existing CSS */
+
+/* Extra Small Screen Adjustments */
+@media (max-width: 320px) {
+  .movieGrid {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .card {
+    min-height: 180px; /* Ensure minimum height */
+    border-radius: 4px;
+  }
+
+  .imageContainer {
+    padding-top: 140%; /* Adjust aspect ratio */
+  }
+
+  .cardImage {
+    object-position: center; /* Ensure image remains centered */
+  }
+
+  .favoriteButton {
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    font-size: 0.9rem;
+    background-color: rgba(0, 0, 0, 0.8); /* More visible background */
+  }
+
+  .cardContent {
+    padding: 0.6rem;
+  }
+
+  .title {
+    font-size: 0.8rem;
+  }
+
+  .date {
+    font-size: 0.7rem;
+  }
+
+  .rating {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.3rem;
+  }
+}
+
+/* Additional fixes for the search bar on tiny screens */
+@media (max-width: 320px) {
+  .searchContainer {
+    padding: 8px 6px;
+  }
+
+  .searchForm {
+    gap: 4px;
+  }
+
+  .searchInput {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    min-width: 100px;
+  }
+
+  .searchButton {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    min-width: 70px;
+  }
+}
