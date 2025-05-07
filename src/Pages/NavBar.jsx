@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './NavBar.module.css';
 import { Link } from 'react-router-dom';
 import { IoMenu, IoClose } from "react-icons/io5";
+import MovieLogo from '../assets/movie-logo.svg';
 
 function NavBar() {
   const [menu, setMenu] = useState(false);
@@ -13,7 +14,16 @@ function NavBar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.navContainer}>
-        <Link to='/' className={styles.logo}>Movie App</Link>
+        <Link to='/' className={styles.logoContainer}>
+          <img 
+            src={MovieLogo}  
+            alt="Movie App Logo" 
+            className={styles.logoImage}
+            width={32}
+            height={32}
+          />
+          <span className={styles.logoText}>Movie App</span>
+        </Link>
         <div className={styles.navLinks}>
           <ul className={styles.navList}>
             <li className={styles.navItem}>

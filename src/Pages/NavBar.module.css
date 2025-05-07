@@ -23,23 +23,73 @@
   box-sizing: border-box;
 }
 
-.logo {
-  margin: 0;
-  font-size: 1.5rem;
-  letter-spacing: 2px;
-  color: #d4af37;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-  transition: 0.2s ease-in;
-  z-index: 101;
-}
-
-.logo:hover {
-  color: #b59428;
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
+/* Logo image styles */
+.logoImage {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Text styles with hover effects */
+.logoText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #d4af37; /* Gold color */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Hover effects for the entire logo container */
+.logoContainer:hover {
+  opacity: 0.9;
+}
+
+.logoContainer:hover .logoImage {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+.logoContainer:hover .logoText {
+  color: #f5d042; /* Brighter gold on hover */
+  text-shadow: 0 0 10px rgba(245, 208, 66, 0.4);
+}
+
+/* Underline animation */
+.logoText::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #f5d042;
+  transition: width 0.3s ease;
+}
+
+.logoContainer:hover .logoText::after {
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logoText {
+    font-size: 1.3rem;
+  }
+  .logoImage {
+    width: 28px;
+    height: 28px;
+  }
+}
 /* Desktop Navigation */
 .navList {
   display: flex;
@@ -317,6 +367,13 @@ html, body {
   .searchButton {
     padding: 8px 12px;
     font-size: 0.85rem;
+  }
+  .logoText {
+    font-size: .8rem;
+  }
+  .logoImage {
+    width: 21px;
+    height: 21px;
   }
 }
 
